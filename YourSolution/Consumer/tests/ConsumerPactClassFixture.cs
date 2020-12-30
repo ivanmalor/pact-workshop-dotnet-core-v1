@@ -8,7 +8,7 @@ namespace tests
     // This class is responsible for setting up a shared
     // mock server for Pact used by all the test
     // Xunit can use a Class Fixture for this.
-    public class ConsumerPactClassFixture
+    public class ConsumerPactClassFixture: IDisposable
     {
         public IPactBuilder PactBuilder { get; private set; }
         public IMockProviderService MockProviderService { get; private set; }
@@ -21,7 +21,7 @@ namespace tests
             var pactConfig = new PactConfig
             {
                 SpecificationVersion = "2.0.0",
-                PactBuilder = @"..\..\..\..\..\pacts",
+                PactDir = @"..\..\..\..\..\pacts",
                 LogDir = @".\pact_logs"
             };
 
